@@ -15,11 +15,43 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 
 // This is the Controller or the Resource Layer
 // It exposes the available endpoints that can be called
+
+// @RestController It's a convenient annotation that combines @Controller and @ResponseBody,
+// which eliminates the need to annotate every request
+// handling method of the controller class with the @ResponseBody
 @RestController
+
+// the annotation is used to map web requests to Spring Controller methods
 @RequestMapping(path = "/api/v1/employees")
 public class EmployeeResource {
 
     // Dependency Injection
+    // Dependency Injection is a method through which the Spring container “injects”
+    // objects into other objects or “dependencies”.
+
+    //* Types *//
+
+    // 1) Field Injection
+    // Field Injection uses reflection to set the values of private variables
+    //    @Autowired
+    //    private UserService userService;
+
+    // 2) Constructor Injection - lets the Spring Container inject the dependencies directly through constructor
+    // Constructor Injection happens at the time of creating the object itself
+    //    private final UserService userService;
+    //    public UserController(UserService userService){
+    //        this.userService = userService;
+    //    }
+
+    // 3) Setter Injection
+    // Setter Injection uses setters to set the value
+    //    private UserService userService;
+    //    @Autowired
+    //    public void setUserService(UserService userService){
+    //        this.userService = userService;
+    //    }
+
+
     private final EmployeeService employeeService;
 
     // @Qualifier is used to eliminate the issue of which bean needs to be injected
